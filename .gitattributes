@@ -1,0 +1,32 @@
+# 文件的行尾自动转换。如果是文本文件，则在文件入Git库时，行尾自动转换为LF。
+# 如果已经在入Git库中的文件的行尾是CRLF，则文件在入Git库时，不再转换为LF。
+* text=auto
+
+# 对于.txt文件，标记为文本文件，并进行行尾规范化。
+# 行尾规范即上一项的规则，此处只是将文件标识为文本文件
+*.txt text
+*.md text
+*.json text
+
+*.h text
+*.hpp text
+*.c text
+*.cpp text
+
+*.ui text
+*.ts text
+
+# 对于`.jpg .png .icon`等文件，标记为非文本文件
+*.jpg -text
+*.jpeg -text
+*.svg -text
+*.png -text
+*.icon -text
+
+# 对于bat文件，标记为文本文件，在文件入Git库时进行规范化，行尾转换为LF。
+# 在检测到出工作目录时，行尾自动转换为CRLF。
+*.bat text eol=crlf
+
+# 对于sh文件，标记为文本文件，在文件入Git库时进行规范化，即行尾为LF。
+# 在检出到工作目录时，行尾也不会转换为CRLF（即保持LF）。
+*.sh text eol=lf
